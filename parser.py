@@ -69,10 +69,11 @@ def preprocess(sentence):
     character.
     """
     words = nltk.tokenize.word_tokenize(sentence)
+    words = [word.lower() for word in words]
     wordsClean = []
     for word in words:
         if word.isalpha():
-            wordsClean.append(word.lower())
+            wordsClean.append(word)
     return wordsClean
 
 def np_chunk(tree):
