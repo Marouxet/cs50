@@ -3,7 +3,7 @@ import sys
 import os 
 import string
 import math
-#nltk.download('all')
+
 
 FILE_MATCHES = 1
 SENTENCE_MATCHES = 1
@@ -16,7 +16,7 @@ def main():
         sys.exit("Usage: python questions.py corpus")
 
     # Calculate IDF values across files
-    #files = load_files("corpus")
+    
     files = load_files(sys.argv[1])
     file_words = {
         filename: tokenize(files[filename])
@@ -77,11 +77,11 @@ def tokenize(document):
     """
     
     tokens = nltk.tokenize.word_tokenize(document)
+    tokens = [word.lower() for word in tokens]
     filterTokens = []
     for word in tokens:
         if (word not in nltk.corpus.stopwords.words("english")) and (word not in list(string.punctuation)):
-            filterTokens.append(word.lower())
-    filterTokens.sort()
+            filterTokens.append(word)
     return filterTokens
     
 
